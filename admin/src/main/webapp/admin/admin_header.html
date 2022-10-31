@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
+<%@ include file = "./session.jsp" %>      
+<meta charset="UTF-8">
+<div class="header_div">
+    <p><img src="./img/logo.png" class="logo_sm"> ADMINISTRATOR</p>
+    <p><%=id %> <%=name%>  <a href="./admin_info.jsp" style="color:#ccc">[개인정보 수정]</a> <a href="./logout.jsp" style="color:#ccc">[로그아웃]</a></p>
+</div>
