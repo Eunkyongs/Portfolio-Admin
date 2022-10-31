@@ -63,8 +63,11 @@ function recogs(rc,no){
 	var no= document.getElementById("no"+no).value;
 		if(rc == "Y"){
 			ajax(rc,no);
+			alert("승인 요청");
 		}else{
 			ajax(rc,no);
+			alert("미승인 요청");
+			
 		}
 /*ajax로 확인하도록*/	
 }
@@ -80,7 +83,7 @@ function ajax(rc,no){
 			if(data.readyState == XMLHttpRequest.DONE && data.status == 200){
 				result=this.response;
 				if(result == "ok"){
-		 			alert("승인 처리가 완료 되었습니다.");
+		 			alert("요청 처리가 완료 되었습니다.");
 				}else{
 					alert("승인 처리 중 에러발생. 에러내용:" + result);
 				}

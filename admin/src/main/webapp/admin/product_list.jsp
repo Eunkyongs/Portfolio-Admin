@@ -34,10 +34,11 @@ if(total % pageview == 0){
 	<span>등록된 상품 <%=total %>건</span> <span>
 			<input type="hidden" name="page" id="page" value="<%=pgno %>">
 			<select name="search_select" id="search_select" class="p_select1">
+				<option value="">검색구분</option>
 				<option value="p_name">상품명</option>
 				<option value="p_code">상품코드</option>
 			</select>
-			<input type="text" name="search_p" name="search_p" class="p_input1" placeholder="검색어를 입력해 주세요" onkeypress="show_key(event)"> 
+			<input type="text" name="search_p" name="search_p" class="p_input1" placeholder="검색어를 입력해 주세요" onkeypress="show_key(event);"> 
 			<input type="button" value="검색" title="상품검색" class="p_submit" onclick="p_search();">
 	</span>
 </div>
@@ -217,24 +218,32 @@ int p = 1;
 	function p_search(){
 		var select = f.search_select.value;
 		var search = f.search_p.value;
-
-		if(f.search_p.value == ""){
+		
+		if(select == ""){
+			alert("검색 구분을 선택해 주세요");
+			f.search_select.focus();
+		}else if(search == ""){
 			alert("검색어를 입력해 주세요");
+			f.search_p.focus();
 		}else{
 			location.href="./product?page="+<%=pg%>+"&search_select="+select+"&search_p="+search;
 		}
 	}
 	
 // 	/*검색어 입력 후 엔터키눌렀을때*/
-// 	function show_key(event){
-// 		const code = event.code;
-// 		console.log(code);
-// 		if(f1.search_select.value == ""){
-// 			alert("검색 구분을 선택해주세요");
-// 		}else if(f1.search_p.value == ""){
-// 			alert("검색어를 입력해 주세요");
-// 		}else{
-<%-- 			location.href="./product?page="+<%=pg%>+"&search_select="+select+"&search_p="+search; --%>
-// 		}
-// 	}
+	function show_key(event){
+		const code = event.code;
+		if(code == "Enter"){
+			if(f.search_select.value == ""){
+				alert("검색 구분을 선택하고 검색어를 입력해 주세요");
+				f.search_select.focus();
+			}
+			else if(f.search_p.value == ""){
+				alert("검색 구분을 선택하고 검색어를 입력해 주세요");
+				f.search_p.focus();
+			}else{
+				location.href="./product?page="+<%=pg%>+"&search_select="+select+"&search_p="+search;
+			}
+		}
+	}
 </script>

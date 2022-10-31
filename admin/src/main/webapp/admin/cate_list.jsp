@@ -109,11 +109,32 @@ function pagego(pgno){
 function cate_search(){
 	var select = f.search_select.value;
 	var search = f.search_cate.value;
-
-	if(search == ""){
+	
+	if(select == ""){
+		alert("검색 구분을 선택해 주세요");
+		f.search_select.focus();
+	}else if(search == ""){
 		alert("검색어를 입력해 주세요");
+		f.search_cate.focus();
 	}else{
 		location.href="./category?page="+<%=pgno%>+"&search_select="+select+"&search_cate="+search;
+	}
+}
+
+//	/*검색어 입력 후 엔터키눌렀을때*/
+function show_key2(event){
+	const code = event.code;
+	if(code == "Enter"){
+		if(f.search_select.value ==""){
+			alert("검색 구분을 선택하고 검색어를 입력해 주세요");
+			f.search_select.focus();
+		}
+		else if(f.search_cate.value == ""){
+			alert("검색 구분을 선택하고 검색어를 입력해 주세요");
+			f.search_cate.focus();
+		}else{
+			location.href="./category?page="+<%=pgno%>+"&search_select="+select+"&search_cate="+search;
+		}
 	}
 }
 </script>
@@ -125,10 +146,11 @@ function cate_search(){
     <span>
         <input type="hidden" id="page" name="page" value="<%=pgno%>">
         <select name="search_select" id="search_select" class="p_select1">
+        	<option value="">검색구분</option>
             <option value="cate_name">카테고리명</option>
             <option value="cate_code">카테고리코드</option>
         </select>
-        <input type="text" class="p_input1" name="search_cate" id="search_cate" placeholder="검색어를 입력해 주세요">
+        <input type="text" class="p_input1" name="search_cate" id="search_cate" placeholder="검색어를 입력해 주세요" onkeypress="show_key2(event);">
         <input type="button" value="검색" title="카테고리 검색" class="p_submit" onclick="cate_search();"  >
     </span>
 </div>
