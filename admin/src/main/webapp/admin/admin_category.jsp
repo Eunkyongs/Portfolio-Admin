@@ -30,7 +30,7 @@ request.setCharacterEncoding("utf-8");
 <!--admin_menu.html-->
 <%@ include file = "./admin_menu.html" %>
 </nav>
-<form id="f" name="f" method="get">
+<form id="f" name="f" method="get" onsubmit="return false;">
 <main class="maincss">
 <section style="height: auto;">
 <!--cate_list.html-->

@@ -25,7 +25,7 @@
 <!--admin_menu.html-->
 <%@ include file = "./admin_menu.html"%>
 </nav>
-<form id="f" name="f" method="GET">
+<form id="f" name="f" method="GET" onsubmit="return false;">
 <main class="maincss">
 <section style="height: auto;">
 <!--product_list.html-->

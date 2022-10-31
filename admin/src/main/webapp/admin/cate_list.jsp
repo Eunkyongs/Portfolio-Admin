@@ -123,15 +123,19 @@ function cate_search(){
 
 //	/*검색어 입력 후 엔터키눌렀을때*/
 function show_key2(event){
+	let select = f.search_select.value;
+	let search = f.search_cate.value;
 	const code = event.code;
-	if(code == "Enter"){
+	if(code == "Enter" || code == "NumpadEnter"){
 		if(f.search_select.value ==""){
 			alert("검색 구분을 선택하고 검색어를 입력해 주세요");
 			f.search_select.focus();
+			return false;
 		}
 		else if(f.search_cate.value == ""){
 			alert("검색 구분을 선택하고 검색어를 입력해 주세요");
 			f.search_cate.focus();
+			return false;
 		}else{
 			location.href="./category?page="+<%=pgno%>+"&search_select="+select+"&search_cate="+search;
 		}
@@ -144,12 +148,12 @@ function show_key2(event){
 <div class="subpage_view">
     <span>등록된 카테고리 <%=total%>건</span>
     <span>
-        <input type="hidden" id="page" name="page" value="<%=pgno%>">
         <select name="search_select" id="search_select" class="p_select1">
         	<option value="">검색구분</option>
             <option value="cate_name">카테고리명</option>
             <option value="cate_code">카테고리코드</option>
         </select>
+        <input type="hidden" id="page" name="page" value="<%=pgno%>">
         <input type="text" class="p_input1" name="search_cate" id="search_cate" placeholder="검색어를 입력해 주세요" onkeypress="show_key2(event);">
         <input type="button" value="검색" title="카테고리 검색" class="p_submit" onclick="cate_search();"  >
     </span>

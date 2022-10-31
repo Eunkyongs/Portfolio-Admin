@@ -233,7 +233,7 @@ int p = 1;
 // 	/*검색어 입력 후 엔터키눌렀을때*/
 	function show_key(event){
 		const code = event.code;
-		if(code == "Enter"){
+		if(code == "Enter" || code == "NumpadEnter"){
 			if(f.search_select.value == ""){
 				alert("검색 구분을 선택하고 검색어를 입력해 주세요");
 				f.search_select.focus();
