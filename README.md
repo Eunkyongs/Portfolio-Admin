@@ -1,6 +1,9 @@
 # Portfolio-Admin
 
-JSP MVC Model2
+JSP MVC Model2 이용한 쇼핑몰 관리자 페이지 입니다.
+
+http://p23456.cafe24.com/portfolio/admin/
+
 
 개발환경
 	
@@ -12,4 +15,5 @@ JSP MVC Model2
 	Apache Tomcat 8.5
 
 사용 기술
+
 	 Java Servlet, JSP, jQuery, JavaScript, Ajax 통신 등
